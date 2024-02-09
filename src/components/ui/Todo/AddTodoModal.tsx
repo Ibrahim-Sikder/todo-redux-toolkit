@@ -22,30 +22,37 @@ import { DialogClose } from "@radix-ui/react-dialog"
 import { FormEvent, useState } from "react"
 import { useAppDispatch } from "@/redux/hooks"
 import { addTodo } from "@/redux/feature/todoSlice"
+import { useAddTodoMutation } from "@/redux/api/api"
 
 const AddTodoModal = () => {
   const [task, setTask] = useState("")
   const [description, setDescription] = useState("")
-  // const [priority, setPriority] = useState("")
-const dispatch = useAppDispatch()
+  const [priority, setPriority] = useState("")
+
+
+  // for local server add
+// const dispatch = useAppDispatch()
+const [addTodo,{data, isLoading}] = useAddTodoMutation()
 
 const onSubmit = (e: FormEvent) => {
 
   e.preventDefault()
 
-  const randomStriong = Math.random().toString(36).substring(2, 7)
+  // const randomStriong = Math.random().toString(36).substring(2, 7)
 
   const taskDetails = {
-    id: randomStriong,
+    // id: randomStriong,
     title: task,
     description,
-    // priority,
+    priority,
     isCompleted:false
   }
   console.log(taskDetails)
   // for local stage management
-  dispatch(addTodo(taskDetails))
+  // dispatch(addTodo(taskDetails))
 
+  // for server 
+  addTodo(taskDetails)
 
 
 
@@ -92,7 +99,7 @@ return (
               <Label htmlFor="description" className="text-right">
                 Priority
               </Label>
-              <Select >
+              <Select onValueChange={(value)=>setPriority(value)}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select a fruit" />
                 </SelectTrigger>
