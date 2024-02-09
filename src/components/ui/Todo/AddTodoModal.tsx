@@ -26,9 +26,8 @@ import { addTodo } from "@/redux/feature/todoSlice"
 const AddTodoModal = () => {
   const [task, setTask] = useState("")
   const [description, setDescription] = useState("")
-  const [priority, setPriority] = useState("")
-
-  const dispatch = useAppDispatch()
+  // const [priority, setPriority] = useState("")
+const dispatch = useAppDispatch()
 
 const onSubmit = (e: FormEvent) => {
 
@@ -40,13 +39,14 @@ const onSubmit = (e: FormEvent) => {
     id: randomStriong,
     title: task,
     description,
-    priority,
+    // priority,
     isCompleted:false
   }
   console.log(taskDetails)
   // for local stage management
-  // dispatch(addTodo(taskDetails))
-dispatch(addTodo(taskDetails))
+  dispatch(addTodo(taskDetails))
+
+
 
 
 }
@@ -92,7 +92,7 @@ return (
               <Label htmlFor="description" className="text-right">
                 Priority
               </Label>
-              <Select onValueChange={(value)=>setPriority(value)}>
+              <Select >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select a fruit" />
                 </SelectTrigger>
