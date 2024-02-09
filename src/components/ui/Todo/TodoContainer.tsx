@@ -8,9 +8,9 @@ import { useGetTodoQuery } from "@/redux/api/api"
 const TodoContainer = () => {
   //local server
   // const { todos } = useAppSelector((state) => state.todos)
-  const {data:todos, isError, isLoading} = useGetTodoQuery(undefined)
-
   const [priority, setPriority] = useState("")
+  const {data:todos, isError, isLoading} = useGetTodoQuery(priority)
+
 
 if(isLoading){
   return <p>Loading......</p>

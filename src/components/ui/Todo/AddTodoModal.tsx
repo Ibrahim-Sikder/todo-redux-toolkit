@@ -32,7 +32,7 @@ const AddTodoModal = () => {
 
   // for local server add
 // const dispatch = useAppDispatch()
-const [addTodo,{data, isLoading}] = useAddTodoMutation()
+const [addTodo] = useAddTodoMutation()
 
 const onSubmit = (e: FormEvent) => {
 

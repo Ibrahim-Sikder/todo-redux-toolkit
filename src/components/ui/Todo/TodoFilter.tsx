@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const TodoFilter = ({priority, setPriority }) => {
-
+console.log(priority)
 
   return (
     <div>
